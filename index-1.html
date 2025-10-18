@@ -3,43 +3,82 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>OblakoUa — Магазин кальянов</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Oblako_Team</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="clouds" aria-hidden="true">
-      <div class="cloud c1"></div>
-      <div class="cloud c2"></div>
-      <div class="cloud c3"></div>
-    </div>
+  <!-- облака на фоне (сохрани cloud.png в папке images/) -->
+  <div class="clouds-bg" aria-hidden="true">
+    <img src="images/cloud.png" class="cloud c1" alt="">
+    <img src="images/cloud.png" class="cloud c2" alt="">
+    <img src="images/cloud.png" class="cloud c3" alt="">
+    <img src="images/cloud.png" class="cloud c4" alt="">
+  </div>
 
-    <div class="hero-inner">
-      <div class="brand">
-        <h1>OblakoUa</h1>
-        <p class="tag">Кальян. Стиль. Облака.</p>
-      </div>
-
-      <div class="hero-cta">
-        <a class="btn" href="shop.html">Перейти в магазин</a>
-      </div>
-    </div>
+  <header class="top">
+    <div class="logo">Oblako<span>Team</span></div>
+    <button id="cart-btn" class="cart-btn">Корзина (<span id="cart-count">0</span>)</button>
   </header>
 
-  <main class="content">
-    <section class="about">
-      <h2>Наш магазин</h2>
-      <p>Тёмный стиль, выразительные облака и аккуратные карточки товара — всё сделано, чтобы товары были в центре внимания.</p>
+  <!-- вкладки категорий -->
+  <nav class="tabs" role="tablist" aria-label="Категории">
+    <button data-category="calyan" class="tab active" role="tab" aria-selected="true">Кальяны</button>
+    <button data-category="kolby" class="tab" role="tab">Колбы</button>
+    <button data-category="mixes" class="tab" role="tab">Смеси</button>
+    <button data-category="access" class="tab" role="tab">Аксессуары</button>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1>Oblako Team — кальяны и аксессуары</h1>
+      <p>Тёмный стиль, мультяшные облака и быстрые заказы через Telegram</p>
     </section>
 
-    <footer class="site-footer">
-      <p>© <strong>OblakoUa</strong> — все права защищены.</p>
-    </footer>
+    <section id="products" class="grid" aria-live="polite"></section>
   </main>
 
-  <script>
-    // Ничего сложного тут — всё на отдельной странице магазина
-  </script>
+  <!-- Модальное окно товара -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-panel">
+      <button id="closeModal" class="modal-close" aria-label="Закрыть">✖</button>
+      <img id="modalImg" src="" alt="" class="modal-img">
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <p id="modalPrice" class="price"></p>
+        <p id="modalDesc" class="desc"></p>
+        <div class="modal-actions">
+          <button id="buyBtn" class="btn-buy">Добавить в корзину</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-backdrop" tabindex="-1"></div>
+  </div>
+
+  <!-- Модальное окно корзины -->
+  <div id="cart-modal" class="modal hidden">
+    <div class="modal-panel small">
+      <button id="close-cart" class="modal-close" aria-label="Закрыть">✖</button>
+      <h2>Корзина</h2>
+      <div id="cart-items"></div>
+      <div class="cart-footer">
+        <div>Итого: <span id="cart-total">0</span> грн</div>
+        <div class="cart-actions">
+          <!-- ссылка на твой Telegram (изменяй при необходимости) -->
+          <a id="tg-order" class="btn-buy" href="https://t.me/+380688884410" target="_blank" rel="noreferrer">Оформить через Telegram</a>
+        </div>
+      </div>
+    </div>
+    <div class="modal-backdrop" tabindex="-1"></div>
+  </div>
+
+  <footer class="bottom">
+    <div class="contacts">
+      <p>Связь: <a href="https://t.me/+380688884410" target="_blank" id="tg-link">+380 68 888 44 10</a></p>
+      <p>Instagram: <a href="#" target="_blank">@OblakoTeam</a></p>
+    </div>
+    <p>© <span id="year"></span> OblakoTeam</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
