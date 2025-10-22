@@ -11,8 +11,7 @@ const products = {
     { id: 1, name: "Odin Hookah", price: 8950, image: PLACEHOLDER },
     { id: 2, name: "Karma ", price: 8550, image: PLACEHOLDER },
     { id: 3, name: "Sky Hookah", price: 3350, image: PLACEHOLDER }
-    { id: 4, name: "Totem", price: 5800, image: PLACEHOLDER }
-    { id: 5, name: "Tiaga", price: 1850, image: PLACEHOLDER }
+   
   ],
   heat: [
     { id: 4, name: "Regulator Totem", price: 650, image: PLACEHOLDER },
