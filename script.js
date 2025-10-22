@@ -8,9 +8,11 @@ const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
 // товары
 const products = {
   hookahs: [
-    { id: 1, name: "Odin Hookah", price: 2500, image: PLACEHOLDER },
-    { id: 2, name: "Karma 2.1", price: 2800, image: PLACEHOLDER },
-    { id: 3, name: "Sky Hookah", price: 2700, image: PLACEHOLDER }
+    { id: 1, name: "Odin Hookah", price: 8950, image: PLACEHOLDER },
+    { id: 2, name: "Karma ", price: 8550, image: PLACEHOLDER },
+    { id: 3, name: "Sky Hookah", price: 3350, image: PLACEHOLDER }
+    { id: 4, name: "Totem", price: 5800, image: PLACEHOLDER }
+    { id: 5, name: "Tiaga", price: 1850, image: PLACEHOLDER }
   ],
   heat: [
     { id: 4, name: "Regulator Totem", price: 650, image: PLACEHOLDER },
