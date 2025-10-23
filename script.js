@@ -9,22 +9,22 @@ const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
 const products = {
   hookahs: [
     { id: 1, name: "Odin Hookah", price: 8950, image: "images/loki.jpg" },
-    { id: 2, name: "Karma ", price: 8550, image: PLACEHOLDER },
-    { id: 3, name: "Sky Hookah", price: 3350, image: PLACEHOLDER }
+    { id: 2, name: "Karma 1.0", price: 8550, image: PLACEHOLDER },
+    { id: 3, name: "Sky Hookah SDM Purple", price: 3350, image: PLACEHOLDER }
   ],
   heat: [
-    { id: 4, name: "Regulator Totem", price: 650, image: PLACEHOLDER },
-    { id: 5, name: "Khmers Control", price: 700, image: PLACEHOLDER },
-    { id: 6, name: "Tiaga Heat", price: 800, image: PLACEHOLDER }
+    { id: 4, name: "TCL", price: 1050, image: PLACEHOLDER },
+    { id: 5, name: "Khmara Control", price: 1200, image: PLACEHOLDER },
+    { id: 6, name: "HaGrani", price: 800, image: PLACEHOLDER }
   ],
   access: [
-    { id: 7, name: "Щипці", price: 350, image: PLACEHOLDER },
-    { id: 8, name: "Ущільнювач", price: 100, image: PLACEHOLDER },
-    { id: 9, name: "Трубка силіконова", price: 250, image: PLACEHOLDER }
+    { id: 7, name: "Щипці Appach", price: 400, image: PLACEHOLDER },
+    { id: 8, name: "Щипці Gramm", price: 450, image: PLACEHOLDER },
+    { id: 9, name: "Щипці Embery", price: 350, image: PLACEHOLDER }
   ],
   bowls: [
-    { id: 10, name: "Чаша Oblako", price: 400, image: PLACEHOLDER },
-    { id: 11, name: "Чаша Sky Bowl", price: 450, image: PLACEHOLDER },
+    { id: 10, name: "Чаша Solaris Phobos", price: 400, image: PLACEHOLDER },
+    { id: 11, name: "Чаша LAVART NEDRA AMBER WOOD", price: 450, image: PLACEHOLDER },
     { id: 12, name: "Чаша Totem", price: 420, image: PLACEHOLDER }
   ]
 };
