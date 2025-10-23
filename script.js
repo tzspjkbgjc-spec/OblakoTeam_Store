@@ -10,7 +10,7 @@ const products = {
   hookahs: [
     { id: 1, name: "Odin Hookah", price: 8950, image: "images/loki.jpg" },
     { id: 2, name: "Karma 1.0", price: 8550, image: "images/karma.jpg" },
-    { id: 3, name: "Sky Hookah SDM Purple", price: 3350, image: "images/sky purpl.png }
+    { id: 3, name: "Sky Hookah SDM Purple", price: 3350, image: "images/sky purpl.png" }
   ],
   heat: [
     { id: 4, name: "TCL", price: 1050, image: PLACEHOLDER },
