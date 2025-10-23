@@ -8,7 +8,7 @@ const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
 // товары
 const products = {
   hookahs: [
-    { id: 1, name: "Odin Hookah", price: 8950, image: PLACEHOLDER },
+    { id: 1, name: "Odin Hookah", price: 8950, image: "images/loki.jpg" },
     { id: 2, name: "Karma ", price: 8550, image: PLACEHOLDER },
     { id: 3, name: "Sky Hookah", price: 3350, image: PLACEHOLDER }
   ],
