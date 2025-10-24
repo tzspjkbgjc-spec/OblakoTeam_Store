@@ -103,9 +103,10 @@ body {
 .card:hover { transform: translateY(-6px); }
 .card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: 8px;
+  background-color: var(--panel); /* фон, если фото не заполняет карточку */
 }
 .card h3 { margin: 10px 0 4px; font-size: 16px; }
 .card p { margin: 0 0 8px; color: var(--accent); }
