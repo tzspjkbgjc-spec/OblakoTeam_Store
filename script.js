@@ -8,17 +8,17 @@ const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
 // товары
 const products = {
   hookahs: [
-    { id: 1, name: "Odin Hookah", price: 8950, image: "images/loki.jpg" },
-    { id: 2, name: "Karma 1.0", price: 8550, image: "images/karma.jpg" },
+    { id: 1, name: "Odin Hookah", price: 8950, image: "images/odinmini.png" },
+    { id: 2, name: "Karma 1.0", price: 8550, image: "images/karma01.png" },
     { id: 3, name: "Sky Hookah SDM Purple", price: 3350, image: "images/sky purpl.png" }
   ],
   heat: [
-    { id: 4, name: "TCL", price: 1050, image: PLACEHOLDER },
-    { id: 5, name: "Khmara Control", price: 1200, image: PLACEHOLDER },
-    { id: 6, name: "HaGrani", price: 800, image: PLACEHOLDER }
+    { id: 4, name: "TCL", price: 1050, image: "images/tclb.png" },
+    { id: 5, name: "Khmara Control", price: 1200, image: "images/khmaraadept.png" },
+    { id: 6, name: "HaGrani", price: 800, image: "images/lotus.png" }
   ],
   access: [
-    { id: 7, name: "Щипці Appach", price: 400, image: PLACEHOLDER },
+    { id: 7, name: "Щипці Appach", price: 400, image: "images/appach.png" },
     { id: 8, name: "Щипці Gramm", price: 450, image: PLACEHOLDER },
     { id: 9, name: "Щипці Embery", price: 350, image: PLACEHOLDER }
   ],
