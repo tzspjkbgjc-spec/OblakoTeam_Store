@@ -14,15 +14,23 @@ body {
   overflow-x: hidden;
 }
 
-/* header */
+/* --- верхняя панель (логотип + корзина) --- */
 .top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  position: relative;
-  z-index: 3;
+  padding: 14px 20px;
+  background: rgba(12,15,19,0.9);
+  position: fixed; /* 👈 фиксируем панель */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+
+
 .logo {
   font-weight: 800;
   color: var(--accent);
@@ -37,18 +45,23 @@ body {
   cursor: pointer;
 }
 
-/* tabs */
+/* --- вкладки (категории) --- */
 .tabs {
   display: flex;
   justify-content: center;
   gap: 10px;
+  background: rgba(12,15,19,0.85);
   padding: 10px;
-  z-index: 3;
-  position: sticky;
-  top: 70px;
-  background: rgba(12,15,19,0.8);
-  backdrop-filter: blur(6px);
+  position: fixed; /* 👈 фиксируем вкладки */
+  top: 60px; /* 👈 расстояние под шапкой */
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+
+
 .tab {
   border: none;
   background: rgba(255,255,255,0.1);
@@ -64,9 +77,10 @@ body {
   color: #111;
 }
 
-/* hero */
-.hero { text-align: center; padding: 24px 16px; }
-
+/* чтобы контент не “заезжал” под верхнюю часть */
+.hero, .grid {
+  margin-top: 140px; /* 👈 создаём отступ под фиксированную шапку */
+}
 /* grid */
 .grid {
   display: grid;
