@@ -19,13 +19,13 @@ const products = {
   ],
   access: [
     { id: 7, name: "Щипці Appach", price: 400, image: "images/appach.png" },
-    { id: 8, name: "Щипці Gramm", price: 450, image: PLACEHOLDER },
-    { id: 9, name: "Щипці Embery", price: 350, image: PLACEHOLDER }
+    { id: 8, name: "Щипці Trumpet", price: 450, image: "images/Trumpet.png" },
+    { id: 9, name: "Щипці Lokko", price: 350, image: "images/lokko.png" }
   ],
   bowls: [
-    { id: 10, name: "Чаша Solaris Phobos", price: 400, image: PLACEHOLDER },
-    { id: 11, name: "Чаша LAVART NEDRA AMBER WOOD", price: 450, image: PLACEHOLDER },
-    { id: 12, name: "Чаша Totem", price: 420, image: PLACEHOLDER }
+    { id: 10, name: "Чаша Solaris Phobos", price: 400, image: "images/solarisphobos.png" },
+    { id: 11, name: "Чаша Lavart Nedra", price: 450, image: "images/lavartnedra.png" },
+    { id: 12, name: "Чаша Gusto Bowls", price: 420, image: "images/gustobowls.png" }
   ]
 };
 
