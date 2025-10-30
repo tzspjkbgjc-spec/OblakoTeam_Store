@@ -1,164 +1,91 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oblako Team Market</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OBLΛKO_TEAM | Hookah Store</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- фон з хмарами -->
-  <div class="clouds-bg">
-    <img src="images/clouds.png" class="cloud c1" alt="">
-    <img src="images/clouds.png" class="cloud c2" alt="">
-    <img src="images/clouds.png" class="cloud c3" alt="">
-    <img src="images/clouds.png" class="cloud c4" alt="">
-    <img src="images/clouds.png" class="cloud c5" alt="">
+  <!-- Плаваючі хмари -->
+  <div class="cloud-layer">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
   </div>
 
-  <!-- верхня панель -->
-  <header class="top">
-    <div class="logo">Oblako<span>Team</span></div>
-    <button id="cart-btn" class="cart-btn">
-      🛒 Кошик (<span id="cart-count">0</span>)
+  <!-- Шапка -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-text">OBLΛKO_TEAM</div>
+      <div class="subtext">HOOKAH & ACCESSORIES</div>
+    </div>
+    <button class="cart-open-btn" id="openCartBtn">
+      <span class="cart-count" id="cartCount">0</span> 🛒
     </button>
   </header>
 
-  <!-- гасло бренду (тепер одразу під шапкою, ЗАКРІПЛЕНО) -->
-  <div class="slogan-bar">
-    <div class="slogan-text">
-      <strong>Oblako Team — преміум стиль, дим і якість.</strong>
-      <span>Вибирай, що тобі до душі.</span>
-    </div>
-  </div>
+  <!-- Контент -->
+  <main class="page-wrap">
+    <!-- Привітальний екран -->
+    <section class="hero" id="heroScreen">
+      <div class="hero-inner">
+        <div class="hero-title">Ласкаво просимо в OBLAKO MARKET</div>
+        <div class="hero-desc">Кальяни, чаші, жарорегулятори, щипці.<br/>Обирай що тобі по душі 💨</div>
+        <button class="hero-cta" id="enterCatalogBtn">Перейти в каталог</button>
+      </div>
+    </section>
 
-  <!-- вкладки категорій -->
-  <nav class="tabs">
-    <button data-category="hookahs" class="tab active">Кальяни</button>
-    <button data-category="heat" class="tab">Регулятори жару</button>
-    <button data-category="access" class="tab">Аксесуари</button>
-    <button data-category="bowls" class="tab">Чаші</button>
-    <button data-category="vases" class="tab">Колби</button>
-  </nav>
+    <!-- Категорії -->
+    <nav class="tabs" id="categoryTabs">
+      <button class="tab-btn active" data-category="hookahs">КАЛЬЯНИ</button>
+      <button class="tab-btn" data-category="koluyd">РЕГУЛЯТОРИ ЖАРУ</button>
+      <button class="tab-btn" data-category="чаши">ЧАШІ</button>
+      <button class="tab-btn" data-category="щипцы">ЩИПЦІ</button>
+    </nav>
 
-  <!-- вкладки брендів кальянів -->
-  <nav id="brand-tabs" class="brand-tabs">
-    <button class="brand-tab active" data-brand="karma">Karma</button>
-    <button class="brand-tab" data-brand="totem">Totem</button>
-    <button class="brand-tab" data-brand="odin">Odin</button>
-    <button class="brand-tab" data-brand="sky">Sky</button>
-    <button class="brand-tab" data-brand="tiaga">Tiaga</button>
-    <button class="brand-tab" data-brand="gramm">Gramm</button>
-    <button class="brand-tab" data-brand="embery">Embery</button>
-  </nav>
+    <!-- Бренди -->
+    <nav class="brands-bar" id="brandBar">
+      <button class="brand-btn active" data-brand="all">ВСІ БРЕНДИ</button>
+      <button class="brand-btn" data-brand="karma">KARMA</button>
+      <button class="brand-btn" data-brand="odin">ODIN</button>
+      <button class="brand-btn" data-brand="totem">TOTEM</button>
+      <button class="brand-btn" data-brand="sky">SKY</button>
+      <button class="brand-btn" data-brand="gramm">GRAMM</button>
+      <button class="brand-btn" data-brand="trumpet">TRUMPET</button>
+      <button class="brand-btn" data-brand="tiaga">TIAGA</button>
+    </nav>
 
-  <!-- товари -->
-  <main>
-    <section id="products" class="grid"></section>
+    <!-- Товари -->
+    <section class="products" id="productGrid"></section>
   </main>
 
-  <!-- модальне вікно кошика -->
-  <div id="cart-modal" class="modal hidden">
-    <div class="modal-backdrop"></div>
-    <div class="modal-panel">
-      <button id="close-cart" class="modal-close">✖</button>
-      <h2>Ваш кошик</h2>
-      <div id="cart-items"></div>
-      <div class="cart-footer">
-        <div class="cart-total">
-          Разом: <span id="cart-total">0</span> грн
+  <!-- Кошик -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-panel">
+      <div class="cart-head">
+        <div class="cart-title">Кошик</div>
+        <button class="cart-close-btn" id="closeCartBtn">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-bottom">
+        <div class="cart-total-line">
+          <span>Разом:</span>
+          <span class="cart-total" id="cartTotal">₴0</span>
         </div>
-        <a id="tg-order"
-           class="btn-checkout"
-           href="https://t.me/Market199"
-           target="_blank">
-           Оформити замовлення
-        </a>
+        <a class="tg-btn" id="tgCheckout" target="_blank" rel="noopener" href="#">Замовити в Telegram</a>
       </div>
     </div>
   </div>
 
-  <!-- АДМІН-ПАНЕЛЬ (прихована, відкривається Shift + A) -->
-  <div id="admin-modal" class="admin-modal hidden">
-    <div class="admin-backdrop"></div>
-    <div class="admin-panel">
-      <button id="admin-close" class="admin-close">✖</button>
-      <h2>Адмін-панель</h2>
-
-      <div class="admin-row">
-        <label>Категорія</label>
-        <select id="admin-category">
-          <option value="hookahs">Кальяни</option>
-          <option value="heat">Регулятори жару</option>
-          <option value="access">Аксесуари</option>
-          <option value="bowls">Чаші</option>
-          <option value="vases">Колби</option>
-        </select>
-      </div>
-
-      <div class="admin-row" id="admin-brand-row">
-        <label>Бренд (для кальянів)</label>
-        <select id="admin-brand">
-          <option value="karma">Karma</option>
-          <option value="totem">Totem</option>
-          <option value="odin">Odin</option>
-          <option value="sky">Sky</option>
-          <option value="tiaga">Tiaga</option>
-          <option value="gramm">Gramm</option>
-          <option value="embery">Embery</option>
-        </select>
-      </div>
-
-      <div class="admin-row">
-        <label>Обрати товар</label>
-        <select id="admin-product-list"></select>
-      </div>
-
-      <div class="admin-row">
-        <label>Назва</label>
-        <input id="admin-name" type="text" />
-      </div>
-
-      <div class="admin-row">
-        <label>Ціна (грн)</label>
-        <input id="admin-price" type="number" min="0" />
-      </div>
-
-      <div class="admin-row">
-        <label>Фото (URL або data:image)</label>
-        <input id="admin-image" type="text" />
-      </div>
-
-      <div class="admin-actions">
-        <button id="admin-save" class="admin-btn primary">Зберегти</button>
-        <button id="admin-delete" class="admin-btn danger">Видалити</button>
-      </div>
-
-      <hr class="admin-sep"/>
-
-      <h3>Додати новий товар</h3>
-      <div class="admin-row">
-        <label>Назва</label>
-        <input id="new-name" type="text" placeholder="Назва нового товару..." />
-      </div>
-      <div class="admin-row">
-        <label>Ціна (грн)</label>
-        <input id="new-price" type="number" min="0" placeholder="0" />
-      </div>
-      <div class="admin-row">
-        <label>Фото (URL або data:image)</label>
-        <input id="new-image" type="text" placeholder="необов’язково" />
-      </div>
-      <button id="new-add" class="admin-btn full">Додати товар</button>
-    </div>
-  </div>
-
-  <!-- футер -->
-  <footer class="bottom">
-    <p>© <span id="year"></span> Oblako Team — створено з любов’ю до диму 💨</p>
-    <div class="social">
-      <a href="https://t.me/Market199" target="_blank">@Market199</a>
-      <a href="https://www.instagram.com/oblako_team?igsh=dnoyNG51aXlndHM=" target="_blank">Instagram</a>
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">OBLΛKO_TEAM</div>
+      <div class="footer-note">Ми не робимо погано. Ми або робимо добре — або не робимо.</div>
+      <div class="footer-legal">© OBLΛKO_TEAM, Kryvyi Rih</div>
     </div>
   </footer>
 
