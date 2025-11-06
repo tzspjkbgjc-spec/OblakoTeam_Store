@@ -1,0 +1,707 @@
+:root {
+  /* ТЁПЛАЯ УГОЛЬНАЯ ТЕМА */
+  --bg-top: #0b0b0c;          /* почти чёрный графит */
+  --bg-bottom: #1a0f0d;       /* тёмно-бордовый, тёплый как угли */
+  --panel: rgba(20,15,15,0.9);/* панели, чуть теплее чем чисто чёрный */
+  --light: #f4f4f4;           /* основной светлый текст */
+  --muted: #9b8885;           /* подписи, вторичный текст с тёплым оттенком */
+  --accent: #ff3b2f;          /* цвет горячего угля */
+  --accent-soft: rgba(255,59,47,0.4);   /* внешнее мягкое свечение */
+  --accent-soft-hover: rgba(255,59,47,0.6);
+  --line: rgba(255,255,255,0.07);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: radial-gradient(circle at 20% 0%, var(--bg-top) 0%, var(--bg-bottom) 70%);
+  color: var(--light);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ========= ОБЛАКА ФОН ========= */
+
+.clouds-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.cloud {
+  position: absolute;
+  opacity: 0.4;
+  filter: blur(2px);
+  mix-blend-mode: screen;
+  animation-timing-function: linear;
+}
+.c1 { width: 260px; top: 10%; left: -30%; animation: float1 40s linear infinite; }
+.c2 { width: 320px; top: 40%; left: -45%; animation: float2 50s linear infinite; }
+.c3 { width: 200px; top: 70%; left: -20%; animation: float3 46s linear infinite; }
+.c4 { width: 300px; top: 15%; left: -40%; animation: float4 52s linear infinite; }
+.c5 { width: 260px; top: 80%; left: -50%; animation: float5 48s linear infinite; }
+
+@keyframes float1 { to { transform: translateX(160vw); } }
+@keyframes float2 { to { transform: translateX(150vw); } }
+@keyframes float3 { to { transform: translateX(140vw); } }
+@keyframes float4 { to { transform: translateX(155vw); } }
+@keyframes float5 { to { transform: translateX(165vw); } }
+
+/* ========= ПРИВЕТСТВЕННЫЙ ЭКРАН ========= */
+
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: radial-gradient(circle at 20% 0%, rgba(0,0,0,0.6) 0%, rgba(26,15,13,0.8) 60%, rgba(0,0,0,0.9) 100%);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--light);
+  animation: welcomeFadeIn 0.6s ease both;
+}
+
+@keyframes welcomeFadeIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes welcomeFadeOut {
+  to   { opacity: 0; transform: translateY(-10px) scale(0.98); }
+}
+
+.welcome-screen.hide {
+  animation: welcomeFadeOut 0.4s ease forwards;
+  pointer-events: none;
+}
+
+.welcome-content h1 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--accent);
+  text-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 18px var(--accent-soft),
+    0 0 32px rgba(255,59,47,0.2);
+  letter-spacing: -0.03em;
+}
+.welcome-content h1 span {
+  color: var(--light);
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.15),
+    0 0 16px rgba(255,255,255,0.06);
+}
+
+.welcome-content p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+#welcome #enter-btn {
+  background: var(--accent);
+  color: #0c0f13;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  min-width: 200px;
+  box-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 18px var(--accent-soft),
+    inset 0 0 8px rgba(0,0,0,0.6),
+    inset 0 0 20px rgba(255,255,255,0.15);
+  transition: box-shadow .25s, transform .25s, background .25s;
+}
+#welcome #enter-btn:hover {
+  background: #ff5147;
+  box-shadow:
+    0 0 8px var(--accent-soft-hover),
+    0 0 24px var(--accent-soft-hover),
+    0 0 48px rgba(255,59,47,0.3),
+    inset 0 0 10px rgba(0,0,0,0.7),
+    inset 0 0 24px rgba(255,255,255,0.2);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ========= ХЕДЕР / ТОП-ПАНЕЛЬ ========= */
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
+  background: rgba(20,15,15,0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  text-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 18px var(--accent-soft),
+    0 0 36px rgba(255,59,47,0.25),
+    inset 0 0 10px rgba(0,0,0,0.8);
+}
+.logo span {
+  color: var(--light);
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.1),
+    0 0 16px rgba(255,255,255,0.05);
+}
+
+.cart-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--light);
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: 0.25s;
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.05),
+    inset 0 0 8px rgba(0,0,0,0.8);
+}
+.cart-btn:hover {
+  background: var(--accent);
+  color: #0c0f13;
+  border-color: transparent;
+  box-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 24px var(--accent-soft),
+    inset 0 0 10px rgba(0,0,0,0.8),
+    inset 0 0 22px rgba(255,255,255,0.2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* ========= СЛОГАН ПОЛОСА ========= */
+
+.slogan-bar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  z-index: 39;
+
+  background: rgba(26,15,13,0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 16px;
+}
+.slogan-text {
+  color: var(--light);
+  line-height: 1.4;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow:
+    0 0 8px rgba(255,59,47,0.2),
+    0 0 16px rgba(255,59,47,0.1);
+}
+.slogan-text strong {
+  color: var(--accent);
+  font-weight: 600;
+  display: block;
+  font-size: 14px;
+  text-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 18px var(--accent-soft),
+    0 0 32px rgba(255,59,47,0.2);
+}
+.slogan-text span {
+  color: var(--muted);
+  font-size: 13px;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ========= ГЛАВНЫЕ КАТЕГОРИИ (Табы) ========= */
+
+.tabs {
+  position: fixed;
+  top: 125px;
+  left: 0;
+  width: 100%;
+  z-index: 38;
+
+  background: rgba(20,15,15,0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 10px;
+}
+
+.tab {
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: var(--light);
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 15px;
+  line-height: 1.2;
+  box-shadow:
+    0 0 4px rgba(0,0,0,0.8),
+    inset 0 0 6px rgba(0,0,0,0.8);
+}
+.tab:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+.tab.active {
+  background: var(--accent);
+  color: #0c0f13;
+  border-color: var(--accent);
+  box-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 24px var(--accent-soft),
+    inset 0 0 10px rgba(0,0,0,0.8),
+    inset 0 0 24px rgba(255,255,255,0.2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* ========= БРЕНДЫ КАЛЬЯНОВ ========= */
+
+.brand-tabs {
+  position: fixed;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 37;
+
+  background: rgba(26,15,13,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  justify-content: flex-start;
+  padding: 10px 12px;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.brand-tabs.hidden {
+  display: none;
+}
+.brand-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-tab {
+  flex: 0 0 auto;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--light);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  line-height: 1.2;
+  box-shadow:
+    0 0 4px rgba(0,0,0,0.8),
+    inset 0 0 6px rgba(0,0,0,0.8);
+}
+.brand-tab:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+.brand-tab.active {
+  background: var(--accent);
+  color: #0c0f13;
+  border-color: var(--accent);
+  box-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 24px var(--accent-soft),
+    inset 0 0 10px rgba(0,0,0,0.8),
+    inset 0 0 24px rgba(255,255,255,0.2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* ========= СЕТКА ТОВАРОВ ========= */
+
+.grid {
+  margin-top: 220px;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  transition: transform 0.2s, background 0.3s;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.8),
+    0 0 20px rgba(255,59,47,0.07);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255,255,255,0.07);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.9),
+    0 0 24px rgba(255,59,47,0.12);
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(20,15,15,0.9);
+  box-shadow:
+    0 0 12px rgba(0,0,0,0.8),
+    0 0 24px rgba(255,59,47,0.08);
+}
+.card h3 {
+  margin: 10px 0 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--light);
+  line-height: 1.3;
+}
+.card p {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 15px;
+  text-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 16px rgba(255,59,47,0.3);
+}
+.btn-buy {
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0c0f13;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  width: 100%;
+  max-width: 180px;
+  box-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 20px var(--accent-soft),
+    inset 0 0 8px rgba(0,0,0,0.7),
+    inset 0 0 20px rgba(255,255,255,0.15);
+}
+.btn-buy:hover {
+  background: #ff5147;
+  transform: scale(1.03) translateY(-2px);
+  box-shadow:
+    0 0 8px var(--accent-soft-hover),
+    0 0 28px var(--accent-soft-hover),
+    inset 0 0 10px rgba(0,0,0,0.8),
+    inset 0 0 26px rgba(255,255,255,0.22);
+}
+
+/* ========= МОДАЛКА КОРЗИНЫ ========= */
+
+.modal.hidden { display: none; }
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+}
+.modal-panel {
+  position: relative;
+  background: rgba(20,15,15,0.95);
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  z-index: 210;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.95),
+    0 0 30px rgba(255,59,47,0.2);
+  border: 1px solid rgba(255,255,255,0.07);
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+}
+.modal-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-close:hover {
+  color: var(--light);
+}
+.modal-panel h2 {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--light);
+  text-shadow:
+    0 0 8px rgba(255,59,47,0.2),
+    0 0 18px rgba(255,59,47,0.1);
+}
+
+#cart-items {
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) rgba(0,0,0,0);
+}
+#cart-items::-webkit-scrollbar {
+  width: 6px;
+}
+#cart-items::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+}
+#cart-items::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+  box-shadow:
+    0 0 8px var(--accent-soft),
+    0 0 24px var(--accent-soft);
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--light);
+}
+.cart-row:last-child {
+  border-bottom: none;
+}
+.cart-row button.remove {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color .2s;
+}
+.cart-row button.remove:hover {
+  color: var(--accent);
+  text-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 16px rgba(255,59,47,0.3);
+}
+
+.cart-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+.cart-total {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--light);
+  text-align: center;
+  text-shadow:
+    0 0 8px rgba(255,59,47,0.2),
+    0 0 18px rgba(255,59,47,0.1);
+}
+.btn-checkout {
+  background: var(--accent);
+  color: #0c0f13;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 15px;
+  transition: background 0.25s, box-shadow 0.25s, transform .25s;
+  box-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 20px var(--accent-soft),
+    inset 0 0 8px rgba(0,0,0,0.7),
+    inset 0 0 20px rgba(255,255,255,0.15);
+}
+.btn-checkout:hover {
+  background: #ff5147;
+  box-shadow:
+    0 0 8px var(--accent-soft-hover),
+    0 0 28px var(--accent-soft-hover),
+    inset 0 0 10px rgba(0,0,0,0.8),
+    inset 0 0 26px rgba(255,255,255,0.22);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ========= ФУТЕР ========= */
+
+.bottom {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px;
+  margin-top: 60px;
+  border-top: 1px solid var(--line);
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  line-height: 1.4;
+  text-shadow:
+    0 0 8px rgba(255,59,47,0.15),
+    0 0 18px rgba(255,59,47,0.05);
+}
+.social {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.social a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  text-shadow:
+    0 0 6px var(--accent-soft),
+    0 0 16px rgba(255,59,47,0.3);
+}
+.social a:hover {
+  text-decoration: underline;
+}
+
+/* ========= АДАПТИВ ========= */
+
+@media (max-width: 700px) {
+  .tab {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .brand-tab {
+    font-size: 14px;
+    padding: 7px 14px;
+  }
+  .slogan-text {
+    font-size: 13px;
+  }
+  .slogan-text strong {
+    font-size: 13px;
+  }
+  .slogan-text span {
+    font-size: 12px;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 220px;
+  }
+  .card img {
+    height: 160px;
+  }
+  .cart-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cart-total {
+    text-align: center;
+  }
+
+  .welcome-content h1 {
+    font-size: 28px;
+  }
+  .welcome-content p {
+    font-size: 13px;
+  }
+  #welcome #enter-btn {
+    min-width: 180px;
+    font-size: 14px;
+    padding: 11px 16px;
+  }
+}
+
+@media (min-width: 701px) {
+  .cart-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-total {
+    text-align: left;
+  }
+  .btn-checkout {
+    min-width: 180px;
+  }
+}
+
+/* ========= УТИЛИТЫ ========= */
+
+/* Этот класс мы используем, чтобы изначально скрыть магазин до входа */
+.hidden {
+  display: none;
+}
